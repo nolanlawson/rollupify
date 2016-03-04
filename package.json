@@ -17,9 +17,11 @@
     "bluebird": "^3.3.3",
     "browserify": "^13.0.0",
     "child-process-promise": "^1.1.0",
+    "coffeeify": "^2.0.1",
     "derequire": "^2.0.3",
     "mocha": "^2.4.5",
-    "stream-to-promise": "^1.1.0"
+    "stream-to-promise": "^1.1.0",
+    "stripify": "^4.0.0"
   },
   "dependencies": {
     "denodeify": "^1.2.1",
