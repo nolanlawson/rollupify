@@ -32,6 +32,7 @@ Example
 ```js
 // index.js
 import hello from './hello';
+console.log(hello);
 export default hello;
 ```
 
