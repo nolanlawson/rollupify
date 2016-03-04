@@ -21,6 +21,17 @@ describe('main test', function () {
     });
   }
 
+  function getPreJsxifyBrowserifiedCode(path, opts) {
+    var b = browserify(require.resolve(path), opts)
+      .transform('jsxify')
+      .transform(transform)
+      .bundle();
+    return stream2promise(b).then(function (buff) {
+      var code = derequire(buff.toString('utf8'));
+      return code;
+    });
+  }
+
   function getPostStripifyBrowserifiedCode(path, opts) {
     var b = browserify(require.resolve(path), opts)
       .transform(transform)
@@ -98,6 +109,15 @@ describe('main test', function () {
       return execBrowserify(code)
     }).then(function (output) {
       assert.equal(output, 'foo bar coffee');
+    });
+  });
+
+  it('does a complex pre-transform transform (jsx)', function () {
+    return getPreCoffeeifyBrowserifiedCode('./test4/index.jsx', {}).then(function (code) {
+      return execBrowserify(code)
+    }).then(function (output) {
+      // TODO: figure out what the output should be and then assert it here
+      assert.equal(output, '<h1>some fancy jsx</h1>');
     });
   });
 

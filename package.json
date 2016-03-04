@@ -19,6 +19,7 @@
     "child-process-promise": "^1.1.0",
     "coffeeify": "^2.0.1",
     "derequire": "^2.0.3",
+    "jsxify": "^0.3.4",
     "mocha": "^2.4.5",
     "stream-to-promise": "^1.1.0",
     "stripify": "^4.0.0"
@@ -36,5 +37,7 @@
     "url": "https://github.com/nolanlawson/rollupify/issues"
   },
   "homepage": "https://github.com/nolanlawson/rollupify#readme",
-  "files": ["index.js"]
+  "files": [
+    "index.js"
+  ]
 }
