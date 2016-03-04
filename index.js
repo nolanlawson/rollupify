@@ -21,7 +21,7 @@ function rollupify(filename, opts) {
   }, function (cb) {
     var self = this;
 
-    // write a temp file just incase we are preceded by
+    // Write a temp file just in case we are preceded by
     // another browserify transform
     var tmpfile = path.resolve(path.dirname(filename),
       path.basename(filename) + '.tmp');
@@ -35,9 +35,7 @@ function rollupify(filename, opts) {
       })
     }).then(function (bundle) {
       var generated = bundle.generate({format: 'cjs'});
-      var sourceMap = generated.map;
-      var code = generated.code;
-      self.push(code);
+      self.push(generated.code);
       self.push(null);
       return unlink(tmpfile);
     }).then(function () {
