@@ -78,3 +78,8 @@ be left untouched, and passed on to Browserify like normal.
 
 Sourcemaps are supported, assuming you pass `--debug` or `{debug: true}`
 into Browserify.
+
+Need more evidence that Rollup and ES6 modules are awesome? See [rollup-comparison](https://github.com/nolanlawson/rollup-comparison)
+and [A better build system with Rollup](http://pouchdb.com/2016/01/13/pouchdb-5.2.0-a-better-build-system-with-rollup.html).
+
+Need to get started converting your CommonJS codebase into ES6? Try [cjs-to-es6](https://github.com/nolanlawson/cjs-to-es6).
