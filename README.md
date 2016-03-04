@@ -1,4 +1,4 @@
-rollupify
+rollupify [![Build Status](https://travis-ci.org/nolanlawson/rollupify.svg?branch=master)](https://travis-ci.org/nolanlawson/rollupify)
 ====
 
 Browserify transform to apply [Rollup](http://rollupjs.org/), converting ES6/ES2015 modules
@@ -10,7 +10,7 @@ This tends to result in smaller bundle sizes, due to Rollup's [tree-shaking](htt
 Usage
 ---
 
-    npm install --save-dev rollupify
+    npm install rollupify
 
 Then:
 
@@ -31,14 +31,12 @@ Example
 
 ```js
 // index.js
-import foo from './hello';
-
+import hello from './hello';
 export default hello;
 ```
 
 ```js
 // hello.js
-
 export default "hello world";
 ```
 
