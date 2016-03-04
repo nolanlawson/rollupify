@@ -35,5 +35,6 @@
   "bugs": {
     "url": "https://github.com/nolanlawson/rollupify/issues"
   },
-  "homepage": "https://github.com/nolanlawson/rollupify#readme"
+  "homepage": "https://github.com/nolanlawson/rollupify#readme",
+  "files": ["index.js"]
 }
