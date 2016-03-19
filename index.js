@@ -37,6 +37,14 @@ function rollupify(filename, opts) {
       var generated = bundle.generate({format: 'cjs'});
       self.push(generated.code);
       self.push(null);
+
+      bundle.modules.forEach(function(module) {
+        var file = module.id;
+        if (!/\.tmp$/.test(file)) {
+          self.emit('file', file)
+        }
+      });
+
       return unlink(tmpfile);
     }).then(function () {
       cb();
