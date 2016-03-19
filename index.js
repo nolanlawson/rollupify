@@ -29,10 +29,16 @@ function rollupify(filename, opts) {
     var doSourceMap = opts.sourceMaps !== false;
 
     writeFile(tmpfile, source, 'utf8').then(function () {
-      return rollup.rollup({
+      var config = {};
+      if (opts.config) {
+        var configPath = /^\//.test(opts.config) ? opts.config : process.cwd() + '/' + opts.config;
+        config = require(configPath);
+      }
+
+      return rollup.rollup(Object.assign(config, {
         entry: tmpfile,
         sourceMap: doSourceMap ? 'inline' : false
-      })
+      }))
     }).then(function (bundle) {
       var generated = bundle.generate({format: 'cjs'});
       self.push(generated.code);

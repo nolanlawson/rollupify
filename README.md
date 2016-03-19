@@ -84,3 +84,32 @@ Need more evidence that Rollup and ES6 modules are awesome? See [rollup-comparis
 and [A better build system with Rollup](http://pouchdb.com/2016/01/13/pouchdb-5.2.0-a-better-build-system-with-rollup.html).
 
 Need to get started converting your CommonJS codebase into ES6? Try [cjs-to-es6](https://github.com/nolanlawson/cjs-to-es6).
+
+Customising rollup
+----
+
+Given a `rollup.config.js` like:
+
+```js
+module.exports = {
+  plugins: [
+    require('rollup-plugin-babel')({
+      exclude: 'node_modules/**'
+    })
+  ]
+}
+```
+
+Use it through the command line:
+
+    browserify -t [ rollupify --config rollup.config.js ] index.js > output.js
+
+Or in your `package.json`:
+
+```js
+"browserify": {
+  "transform": ["rollupify", {"config": "rollup.config.js"}]
+}
+```
+
+
