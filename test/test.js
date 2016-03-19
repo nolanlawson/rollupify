@@ -32,9 +32,9 @@ describe('main test', function () {
     });
   }
 
-  function getBrowserifiedCode(path, opts) {
+  function getBrowserifiedCode(path, opts, transformOpts) {
     var b = browserify(require.resolve(path), opts)
-      .transform(transform).bundle();
+      .transform(transform, transformOpts).bundle();
     return stream2promise(b).then(function (buff) {
       var code = derequire(buff.toString('utf8'));
       return code;
@@ -106,6 +106,16 @@ describe('main test', function () {
       return execBrowserify(code)
     }).then(function (output) {
       assert.equal(output, '');
+    });
+  });
+
+  it('uses a custom config in rollup', function () {
+    return Promise.resolve().then(function () {
+      return getBrowserifiedCode('./test1', {}, {config: './test/rollup.config.js'});
+    }).then(function (code) {
+      return execBrowserify(code);
+    }).then(function (output) {
+      assert.equal(output, 'rollup-plugin-test');
     });
   });
 
