@@ -109,9 +109,23 @@ describe('main test', function () {
     });
   });
 
-  it('uses a custom config in rollup', function () {
+  it('uses a custom config in rollup (filepath)', function () {
     return Promise.resolve().then(function () {
       return getBrowserifiedCode('./test1', {}, {config: './test/rollup.config.js'});
+    }).then(function (code) {
+      return execBrowserify(code);
+    }).then(function (output) {
+      assert.equal(output, 'rollup-plugin-test');
+    });
+  });
+  
+  it('uses a custom config in rollup (api)', function () {
+    var config = require('./rollup.config.js');
+    
+    return Promise.resolve().then(function () {
+      return getBrowserifiedCode('./test1', {}, {config: {
+        plugins: [require('./rollup-plugin-test')]
+      }});
     }).then(function (code) {
       return execBrowserify(code);
     }).then(function (output) {
