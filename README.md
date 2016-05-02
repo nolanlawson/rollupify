@@ -112,4 +112,11 @@ Or in your `package.json`:
 }
 ```
 
+If you are using Browserify in JavaScript, you can also pass in the `config` object directly:
 
+```js
+var b = browserify('./')
+  .transform('rollupify', {
+    config: { /* your rollup config goes here */ }
+  }).bundle();
+```
