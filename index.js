@@ -30,9 +30,13 @@ function rollupify(filename, opts) {
 
     writeFile(tmpfile, source, 'utf8').then(function () {
       var config = {};
-      if (opts.config) {
+      if (typeof opts.config === 'string') {
         var configPath = /^\//.test(opts.config) ? opts.config : process.cwd() + '/' + opts.config;
         config = require(configPath);
+      }
+      
+      if (typeof opts.config === 'object') {
+        config = opts.config;
       }
 
       return rollup.rollup(Object.assign(config, {
