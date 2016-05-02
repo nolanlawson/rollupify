@@ -33,9 +33,7 @@ function rollupify(filename, opts) {
       if (typeof opts.config === 'string') {
         var configPath = /^\//.test(opts.config) ? opts.config : process.cwd() + '/' + opts.config;
         config = require(configPath);
-      }
-      
-      if (typeof opts.config === 'object') {
+      } else if (typeof opts.config === 'object') {
         config = opts.config;
       }
 
