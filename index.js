@@ -7,6 +7,7 @@ var fs = require('fs');
 var writeFile = denodeify(fs.writeFile);
 var unlink = denodeify(fs.unlink);
 var path = require('path');
+var noop = require('noop-fn');
 
 function rollupify(filename, opts) {
   if (!/\.(?:js|es|es6|jsx)$/.test(filename)) {
@@ -52,11 +53,11 @@ function rollupify(filename, opts) {
           self.emit('file', file)
         }
       });
-
-      return unlink(tmpfile);
+    }).catch(function (err) {
+      self.emit('error', err);
     }).then(function () {
-      cb();
-    }).catch(cb);
+      return unlink(tmpfile).catch(noop);
+    }).then(cb);
   });
 }
 

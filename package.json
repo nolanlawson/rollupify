@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "denodeify": "^1.2.1",
+    "noop-fn": "^1.0.0",
     "rollup": "^0.25.4",
     "through2": "^2.0.1"
   },
