@@ -7,6 +7,7 @@ var stream2promise = require('stream-to-promise');
 var spawn = require('child-process-promise').spawn;
 var derequire = require('derequire');
 var Promise = require('bluebird');
+var fs = require('fs');
 
 describe('main test', function () {
 
@@ -118,10 +119,10 @@ describe('main test', function () {
       assert.equal(output, 'rollup-plugin-test');
     });
   });
-  
+
   it('uses a custom config in rollup (api)', function () {
     var config = require('./rollup.config.js');
-    
+
     return Promise.resolve().then(function () {
       return getBrowserifiedCode('./test1', {}, {config: {
         plugins: [require('./rollup-plugin-test')]
@@ -130,6 +131,20 @@ describe('main test', function () {
       return execBrowserify(code);
     }).then(function (output) {
       assert.equal(output, 'rollup-plugin-test');
+    });
+  });
+
+  it('emits errors', function () {
+    return new Promise(function (resolve, reject) {
+      browserify(require.resolve('./test4'))
+        .transform(transform).bundle()
+        .on('error', reject)
+        .on('end', resolve);
+    }).then(function () {
+      throw new Error('expected an error here');
+    }, function (err) {
+      assert(err);
+      assert(!fs.existsSync('test/test4/index.js.tmp'));
     });
   });
 
