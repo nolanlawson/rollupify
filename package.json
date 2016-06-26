@@ -20,7 +20,7 @@
     "coffeeify": "^2.0.1",
     "derequire": "^2.0.3",
     "mocha": "^2.4.5",
-    "stream-to-promise": "^2.1.1",
+    "stream-to-promise": "1.1.1",
     "stripify": "^4.0.0"
   },
   "dependencies": {
