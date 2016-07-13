@@ -9,6 +9,8 @@ var unlink = denodeify(fs.unlink);
 var path = require('path');
 var noop = require('noop-fn');
 
+var cache;
+
 function rollupify(filename, opts) {
   if (!/\.(?:js|es|es6|jsx)$/.test(filename)) {
     return through();
@@ -39,11 +41,13 @@ function rollupify(filename, opts) {
       }
 
       return rollup.rollup(Object.assign(config, {
+        cache: cache,
         entry: tmpfile,
         sourceMap: doSourceMap ? 'inline' : false
       }))
     }).then(function (bundle) {
       var generated = bundle.generate({format: 'cjs'});
+      cache = bundle;
       self.push(generated.code);
       self.push(null);
 
