@@ -12,7 +12,7 @@ var noop = require('noop-fn');
 var cache;
 
 function rollupify(filename, opts) {
-  if (!/\.(?:js|es|es6|jsx)$/.test(filename)) {
+  if (!/\.(?:js|es|es6|jsx|ts|tsx)$/.test(filename)) {
     return through();
   }
 
