@@ -21,7 +21,7 @@
     "derequire": "^2.0.3",
     "mocha": "^3.0.1",
     "stream-to-promise": "1.1.1",
-    "stripify": "^4.0.0"
+    "stripify": "^5.0.0"
   },
   "dependencies": {
     "denodeify": "^1.2.1",
