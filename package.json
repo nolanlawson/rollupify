@@ -1,6 +1,6 @@
 {
   "name": "rollupify",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Rollup transform for Browserify",
   "main": "index.js",
   "scripts": {
