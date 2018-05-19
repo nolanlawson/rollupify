@@ -19,7 +19,7 @@
     "child-process-promise": "^2.0.3",
     "coffeeify": "^2.0.1",
     "derequire": "^2.0.3",
-    "mocha": "^3.0.1",
+    "mocha": "^3.4.0",
     "stream-to-promise": "1.1.1",
     "stripify": "^5.0.0"
   },
