@@ -42,20 +42,21 @@ function rollupify(filename, opts) {
 
       return rollup.rollup(Object.assign(config, {
         cache: cache,
-        entry: tmpfile,
-        sourceMap: doSourceMap ? 'inline' : false
+        input: tmpfile,
+        sourcemap: doSourceMap ? 'inline' : false
       }))
     }).then(function (bundle) {
-      var generated = bundle.generate({format: 'cjs'});
-      cache = bundle;
-      self.push(generated.code);
-      self.push(null);
+      bundle.generate({format: 'cjs'}).then(function (generated) {
+        cache = bundle;
+        self.push(generated.code);
+        self.push(null);
 
-      bundle.modules.forEach(function(module) {
-        var file = module.id;
-        if (!/\.tmp$/.test(file)) {
-          self.emit('file', file)
-        }
+        bundle.modules.forEach(function(module) {
+          var file = module.id;
+          if (!/\.tmp$/.test(file)) {
+            self.emit('file', file)
+          }
+        });
       });
     }).catch(function (err) {
       self.emit('error', err);
