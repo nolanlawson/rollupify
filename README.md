@@ -1,4 +1,4 @@
-rollupify [![Build Status](https://travis-ci.org/nolanlawson/rollupify.svg?branch=master)](https://travis-ci.org/nolanlawson/rollupify)
+rollupify [![Build Status](https://travis-ci.org/nolanlawson/rollupify.svg?branch=master)](https://travis-ci.org/nolanlawson/rollupify) [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 ====
 
 Browserify transform to apply [Rollup](http://rollupjs.org/), converting ES6/ES2015 modules
@@ -6,6 +6,8 @@ into one big CommonJS module.
 
 This tends to result in smaller bundle sizes, due to Rollup's [tree-shaking](http://www.2ality.com/2015/12/webpack-tree-shaking.html) and
 [scope-hoisting](https://github.com/substack/node-browserify/issues/1379#issuecomment-183383199) capabilities.
+
+⚠️ _**Maintenance notice:** This repo is unmaintained. I consider it largely a hack for migrating existing Browserify/CommonJS projects to Rollup/ESM. Probably you should just use Rollup instead, with plugins like `rollup-plugin-commonjs` and `rollup-plugin-node-resolve`, or manually run `rollup` before `browserify`._
 
 Usage
 ---
