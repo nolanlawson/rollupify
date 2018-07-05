@@ -53,7 +53,7 @@ function rollupify(filename, opts) {
 
         bundle.modules.forEach(function(module) {
           var file = module.id;
-          if (!/\.tmp$/.test(file)) {
+          if (!/\.tmp$/.test(file) && fs.existsSync(file)) {
             self.emit('file', file)
           }
         });
